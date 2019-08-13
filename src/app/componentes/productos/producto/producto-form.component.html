@@ -1,0 +1,52 @@
+<div class="card mt-3 rounded-lg animated fadeIn">
+  <div class="card-head">
+    <h5 class="p-2 text-center text-light bg-dark">
+      Alta/Modificación de productos
+    </h5>
+  </div>
+  <div class="card-body">
+      <form #productForm="ngForm">
+          <input type="hidden" name="id" #id="ngModel"
+                 [(ngModel)]="productosService.productoEnCurso.id">
+          <div class="form-group">
+              <input type="text" class="form-control" placeholder="Descripción"
+                     [(ngModel)]="productosService.productoEnCurso.descripcion"
+                     name="descripcion" #descripcion="ngModel">
+          </div>
+          <div class="form-group">
+              <div class="input-group">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text">€</span>
+                  </div>
+                  <input type="number" class="form-control col-md-4" name="precio"
+                         [(ngModel)]="productosService.productoEnCurso.precio"
+                         placeholder="Precio" #precio="ngModel">
+              </div>
+          </div>
+
+          <div class="container">
+            <div class="row">
+              <app-file-upload [productoId]="productosService.productoEnCurso.id"></app-file-upload>
+            </div>
+          </div>
+
+          <div class="container">
+            <div class="row">
+              <div class="col text-center">
+                <button (click)="onSubmit()" [disabled]="(descripcion.value === '' || precio.value <= 0)"
+                        class="btn btn-primary" type="button">
+                  <i class="fas fa-plus-circle"></i> Guardar
+                </button>&nbsp;
+                <button class="btn btn-secondary" type="button" (click)="resetForm()">
+                  <i class="fas fa-sync-alt"></i> Reset
+                </button>&nbsp;
+                <button [ngClass]="mostrarLista ? 'btn-info':'btn-success'" class="btn" type="button" (click)="toogleLista()">
+                  <span *ngIf="!mostrarLista"><i class="fas fa-plus-circle"></i> Mostrar productos</span>
+                  <span *ngIf="mostrarLista"><i class="fas fa-minus-circle"></i> Ocultar productos</span>
+                </button>&nbsp;
+              </div>
+            </div>
+          </div>
+      </form>
+  </div>
+</div>

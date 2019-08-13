@@ -1,0 +1,28 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-sm">
+  <div class="collapse navbar-collapse justify-content-between" id="navbar">
+    <div class="navbar-nav">
+      <a href="/" class="navbar-brand">Gestión de productos</a>
+    </div>
+    <div class="navbar-nav">
+      <ul class="navbar-nav navbar-right" *ngIf="autService.usuario.uid">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
+             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img [src]="autService.usuario.foto" class="rounded-circle" alt="foto" width="40" height="40">
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="#" (click)="autService.logout()">Salir</a>
+          </div>
+        </li>
+      </ul>
+      <span *ngIf="autService.usuario.uid" class="text-light">
+        <small>
+        {{ autService.usuario.nombre }}<br>
+        {{ autService.usuario.correo }}
+        </small>
+      </span>
+    </div>
+  </div>
+</nav>
+<app-login *ngIf="!autService.usuario.uid"></app-login>
+<app-productos-container *ngIf="autService.usuario.uid"></app-productos-container>

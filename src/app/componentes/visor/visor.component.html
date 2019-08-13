@@ -1,0 +1,9 @@
+<div class="card-columns" *ngIf="mostrar">
+  <div class="card" *ngFor="let current of items$ | async">
+    <img class="rounded-sm img-thumbnail" [src]="current.url" class="card-img-top" [alt]="current.nombre">
+    <div class="card-body text-center">
+      <p class="card-title">{{current.nombre}}</p>
+      <a [href]="current.url" target="_blank">Abrir</a>
+    </div>
+  </div>
+</div>

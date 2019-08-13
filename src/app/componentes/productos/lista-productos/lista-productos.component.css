@@ -1,0 +1,27 @@
+div.card {
+  background-color: gainsboro;
+}
+
+table {
+  box-shadow: 23px 3px 5px 6px #ccc;
+}
+
+.table thead {
+  width: 97%;
+}
+
+.table tbody {
+  height: 40vh;
+  overflow-y: auto;
+  width: 100%;
+}
+
+.table thead, .table tbody, .table tr, .table td, .table th {
+  display: block;
+}
+
+.table tbody td, .table thead > tr> th {
+  float: left;
+  border-bottom-width: 0;
+}
+
